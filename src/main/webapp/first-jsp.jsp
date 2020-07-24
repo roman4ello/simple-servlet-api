@@ -1,7 +1,6 @@
-<%@ page import="java.time.LocalDateTime" %>
-<%@ page import="java.util.ArrayList" %>
-<%@ page import="java.util.List" %>
 <%@ page import="com.boyar.roman.servlet.User" %>
+<%@ page import="java.time.LocalDateTime" %>
+<%@ page import="java.util.List" %>
 
 <!doctype html>
 <html>
@@ -12,8 +11,8 @@
 <h1> Hello JSP</h1>
 
 <%
-  response.getWriter().write("First message");
-  out.print("right here after header");
+    response.getWriter().write("First message");
+    out.print("right here after header");
 %>
 
 <br/>
@@ -24,27 +23,33 @@
 
 <%
     List<User> users = (List) request.getAttribute("users");
-    User anUser =  users.get(0);
-    %>
-    <b><%=  anUser.getName() %></b>
-    <i><%= anUser.getCountry() %></i>
-    <u><%= anUser.getAge() %></u>
+    User anUser = users.get(0);
+%>
+<b><%=  anUser.getName() %>
+</b>
+<i><%= anUser.getCountry() %>
+</i>
+<u><%= anUser.getAge() %>
+</u>
 <br/>
 
-    <table>
-        <% for (User user: users){%>
-        <tr>
-<td><%=  user.getName() %></td>
-<td>
-    <% if (user.getCountry().equals("Vietman")) { %>
-        <b><%= user.getCountry() %></b>
-    <% } else { %>
-        <%=  user.getCountry() %>
+<table>
+    <% for (User user : users) {%>
+    <tr>
+        <td><%=  user.getName() %>
+        </td>
+        <td>
+            <% if (user.getCountry().equals("Vietman")) { %>
+            <b><%= user.getCountry() %>
+            </b>
+            <% } else { %>
+            <%=  user.getCountry() %>
+            <% } %>
+        </td>
+        <td><%=  user.getAge() %>
+        </td>
+    </tr>
     <% } %>
-</td>
-<td><%=  user.getAge() %></td>
-        </tr>
-   <% } %>
-    </table>
+</table>
 </body>
 </html>
